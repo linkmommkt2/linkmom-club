@@ -164,15 +164,31 @@
   var shown = Array.prototype.filter.call(document.querySelectorAll('.card'), function (c) { return !c.hidden; });
   if (shown.length % 3 === 1) shown[shown.length - 1].classList.add('solo');
 
-  // 2) 어느 방을 눌렀는지 기록해요. 구글 애널리틱스(gtag)나 메타 픽셀(fbq)이
-  //    페이지에 붙어 있으면 자동으로 보내고, 없으면 아무 일도 하지 않아요.
+  // 2) 구글 애널리틱스 연결: 아래 따옴표 안에 측정 ID(G-로 시작)를 넣으면 켜져요.
+  var GA_ID = '';
+  if (GA_ID) {
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(ga);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // 어디서 들어왔는지 (주소 끝 ?utm_source=... 값). 인스타 DM, 매장 QR을 나눠 볼 때 써요.
+  var entry = (location.search.match(/[?&]utm_source=([^&]+)/) || [])[1] || 'direct';
+
+  // 3) 어느 방을 눌렀는지 기록해요. 구글 애널리틱스(gtag)나 메타 픽셀(fbq)이
+  //    붙어 있으면 보내고, 없으면 아무 일도 하지 않아요.
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[data-room]');
     if (!a) return;
     var room = a.getAttribute('data-room');
     try {
-      if (window.gtag) gtag('event', 'select_content', { content_type: 'openchat_room', item_id: room });
-      if (window.fbq) fbq('trackCustom', 'OpenChatRoomClick', { room: room });
+      if (window.gtag) gtag('event', 'openchat_click', { room: room, entry: entry, transport_type: 'beacon' });
+      if (window.fbq) fbq('trackCustom', 'OpenChatRoomClick', { room: room, entry: entry });
     } catch (err) {}
   });
 </script>
