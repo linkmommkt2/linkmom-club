@@ -24,58 +24,55 @@
   body{
     background:var(--bg); color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
-    line-height:1.45; padding:0 16px env(safe-area-inset-bottom);
+    line-height:1.4; padding:0 16px env(safe-area-inset-bottom);
   }
-  .wrap{max-width:520px;margin:0 auto;padding:28px 0 36px}
+  .wrap{max-width:520px;margin:0 auto;padding:16px 0 28px}
   .brand{
     display:inline-block;background:var(--ink);color:#fff;font-weight:700;
-    font-size:13px;letter-spacing:.04em;padding:8px 14px;border-radius:999px;
+    font-size:12px;letter-spacing:.04em;padding:6px 12px;border-radius:999px;
   }
-  h1{font-size:28px;line-height:1.3;margin:18px 0 8px;font-weight:800;letter-spacing:-.02em}
-  .lead{color:var(--muted);font-size:15px}
-  .perks{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 22px;list-style:none}
+  h1{font-size:23px;line-height:1.3;margin:10px 0 2px;font-weight:800;letter-spacing:-.02em}
+  .lead{color:var(--muted);font-size:14px}
+  .perks{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 12px;list-style:none}
   .perks li{
     background:#fff;border:1px solid var(--line);border-radius:999px;
-    font-size:13px;font-weight:600;padding:6px 12px;
+    font-size:11px;font-weight:600;padding:3px 8px;
   }
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
   .card{
     display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
-    border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;
+    border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;
     box-shadow:0 1px 2px rgba(20,24,40,.04);
-    transition:transform .12s ease, box-shadow .12s ease;
+    transition:transform .12s ease;
     -webkit-tap-highlight-color:transparent;
   }
-  .card:active{transform:scale(.98)}
+  .card:active{transform:scale(.97)}
   .card[hidden]{display:none}
-  .card img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
-  .info{display:flex;flex-direction:column;padding:12px 12px 6px}
-  .year{font-size:17px;font-weight:800;letter-spacing:-.01em}
-  .sub{font-size:13px;color:var(--muted);margin-top:2px}
+  .card img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center 42%}
+  .info{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 4px 0}
+  .year{font-size:14px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+  .sub{font-size:12px;color:var(--muted);margin-top:1px;white-space:nowrap}
   .btn{
-    margin:8px 12px 12px;text-align:center;font-weight:700;font-size:15px;
-    padding:11px 0;border-radius:12px;background:var(--accent);color:#fff;
+    margin:7px 8px 8px;text-align:center;font-weight:700;font-size:13px;
+    padding:5px 0;border-radius:9px;background:var(--accent);color:#fff;
   }
   .card.pending{opacity:.55;pointer-events:none}
   .card.pending .btn{background:#b9bcc6}
-  /* 보이는 카드가 홀수면 마지막 카드를 가운데에 (아래 스크립트가 solo 표시를 붙여요) */
-  .card.solo{
-    grid-column:1 / -1;justify-self:center;width:calc(50% - 7px);
-  }
+  /* 마지막 줄에 카드가 하나만 남으면 가운데 칸에 놓아요 (아래 스크립트가 solo 표시를 붙여요) */
+  .card.solo{grid-column:2}
   .help{
-    margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;
+    margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;
   }
-  .help b{display:block;font-size:16px;margin-bottom:4px}
-  .help p{font-size:14px;color:var(--muted);margin-top:2px}
+  .help p{font-size:13px;color:var(--muted)}
   .help strong{color:var(--ink)}
-  .note{margin-top:20px;font-size:12px;color:var(--muted);line-height:1.6}
+  .note{margin-top:14px;font-size:11px;color:var(--muted);line-height:1.6}
 </style>
 </head>
 <body>
 <main class="wrap">
   <span class="brand">LINKMOM 또래맘 클럽</span>
-  <h1>우리 아이는<br>몇 년생이에요?</h1>
-  <p class="lead">같은 해에 태어난 또래맘끼리, 우리 아이 나이에 맞는 소식만 받아보세요.</p>
+  <h1>우리 아이는 몇 년생이에요?</h1>
+  <p class="lead">같은 해에 태어난 또래맘끼리 맞춤 소식을 받아보세요.</p>
 
   <ul class="perks">
     <li>비공개 핫딜</li>
@@ -88,7 +85,7 @@
       <a class="card" href="https://open.kakao.com/o/pmNSCkSi" data-room="2027" style="--accent:#E5534B">
         <img src="images/2027.jpg" alt="2027년 출산 예정 예비양띠맘방 커버" width="300" height="400" loading="eager">
         <span class="info">
-          <span class="year">2027년 출산 예정</span>
+          <span class="year">2027 출산예정</span>
           <span class="sub">예비양띠맘방</span>
         </span>
         <span class="btn">입장하기</span>
@@ -97,7 +94,7 @@
         <img src="images/2026.jpg" alt="2026년생 말띠맘방 · 0세 커버" width="300" height="400" loading="eager">
         <span class="info">
           <span class="year">2026년생</span>
-          <span class="sub">말띠맘방 · 0세</span>
+          <span class="sub">말띠 · 0세</span>
         </span>
         <span class="btn">입장하기</span>
       </a>
@@ -105,7 +102,7 @@
         <img src="images/2025.jpg" alt="2025년생 뱀띠맘방 · 1세 커버" width="300" height="400" loading="eager">
         <span class="info">
           <span class="year">2025년생</span>
-          <span class="sub">뱀띠맘방 · 1세</span>
+          <span class="sub">뱀띠 · 1세</span>
         </span>
         <span class="btn">입장하기</span>
       </a>
@@ -113,30 +110,30 @@
         <img src="images/2024.jpg" alt="2024년생 용띠맘방 · 2세 커버" width="300" height="400" loading="eager">
         <span class="info">
           <span class="year">2024년생</span>
-          <span class="sub">용띠맘방 · 2세</span>
+          <span class="sub">용띠 · 2세</span>
         </span>
         <span class="btn">입장하기</span>
       </a>
       <a class="card" href="https://open.kakao.com/o/pwyCzkSi" data-room="2023" style="--accent:#E9507F">
-        <img src="images/2023.jpg" alt="2023년생 토끼띠맘방 · 3세 커버" width="300" height="400" loading="lazy">
+        <img src="images/2023.jpg" alt="2023년생 토끼띠맘방 · 3세 커버" width="300" height="400" loading="eager">
         <span class="info">
           <span class="year">2023년생</span>
-          <span class="sub">토끼띠맘방 · 3세</span>
+          <span class="sub">토끼띠 · 3세</span>
         </span>
         <span class="btn">입장하기</span>
       </a>
       <a class="card" href="https://open.kakao.com/o/pqovHkSi" data-room="2022" style="--accent:#C99700">
-        <img src="images/2022.jpg" alt="2022년생 호랑이띠맘방 · 4세 커버" width="300" height="400" loading="lazy">
+        <img src="images/2022.jpg" alt="2022년생 호랑이띠맘방 · 4세 커버" width="300" height="400" loading="eager">
         <span class="info">
           <span class="year">2022년생</span>
-          <span class="sub">호랑이띠맘방 · 4세</span>
+          <span class="sub">호랑이띠 · 4세</span>
         </span>
         <span class="btn">입장하기</span>
       </a>
       <a class="card" href="https://open.kakao.com/o/pw0aIkSi" data-room="kids" style="--accent:#1FA3AD">
-        <img src="images/kids.jpg" alt="2021년생 이전 키즈맘방 커버" width="300" height="400" loading="lazy">
+        <img src="images/kids.jpg" alt="2021년생 이전 키즈맘방 커버" width="300" height="400" loading="eager">
         <span class="info">
-          <span class="year">2021년생 이전</span>
+          <span class="year">2021년 이전</span>
           <span class="sub">키즈맘방</span>
         </span>
         <span class="btn">입장하기</span>
@@ -144,7 +141,6 @@
   </section>
 
   <section class="help">
-    <b>어느 방을 고르면 될까요?</b>
     <p>아이가 태어난 해의 방을 골라 주세요. 출산 예정일이 2027년이면 <strong>2027 예비양띠맘방</strong>, 올해(2026년) 태어난 아이는 <strong>2026 말띠맘방</strong>이에요.</p>
   </section>
 
@@ -164,9 +160,9 @@
     }
   });
 
-  // 보이는 카드 수가 홀수면 마지막 카드를 가운데로 놓아요.
+  // 3칸씩 놓다가 마지막 줄에 카드가 하나만 남으면 가운데 칸으로 옮겨요.
   var shown = Array.prototype.filter.call(document.querySelectorAll('.card'), function (c) { return !c.hidden; });
-  if (shown.length % 2 === 1) shown[shown.length - 1].classList.add('solo');
+  if (shown.length % 3 === 1) shown[shown.length - 1].classList.add('solo');
 
   // 2) 어느 방을 눌렀는지 기록해요. 구글 애널리틱스(gtag)나 메타 픽셀(fbq)이
   //    페이지에 붙어 있으면 자동으로 보내고, 없으면 아무 일도 하지 않아요.
